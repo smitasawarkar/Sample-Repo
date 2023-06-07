@@ -1,0 +1,64 @@
+-----------------------------------------------------
+Git Branch Commands
+-----------------------------------------------------
+
+-- TO initialize the any directory as git reposotory
+git init
+
+--To show all available braches
+git branch
+
+--show all branches including remote
+git branch -a 
+
+--show the remote branches
+git branch -r
+
+--To create new beanch
+git branch <branch-name>
+
+--To switch another branch
+git checkout <branch-name>
+
+--To create new branch and checkout at the same time
+git checkout -b <branch-name>
+
+--push local branch to remote / github 
+git push -u origin <branch-name>
+
+--to merge a branch into currently checkout branch
+git merge <branch-name which is to be merge>
+ex. git merge dev
+consider current branch is dev-next. Now dev branch will be merge in dev-next.
+
+
+--delete local branch
+git branch -d <branch-name>
+
+--delete local branch forcefully
+git branch -D <branch-name>
+
+--delete remote branch
+git push origin -d <branch-name>
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+--To check the status of the project, we can see untracked files commited files
+git status
+
+Newly added files start from untracked status
+
+--To add the untracked files in staging area, you can specify multiple fies seperated by space
+ex. git add cal.css calc.js
+
+--delete and add to staging area
+git rm filename
+
+--to add all files from cureent working directory to staging area
+git add --all
+git add *
+git add .
+
+--To add modified files in staging area and commit at same time(it will add only modified files)
+git commit -a -m "commit message"
