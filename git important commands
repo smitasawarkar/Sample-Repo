@@ -1,0 +1,31 @@
+.....Git.....
+ 
+to clone from git
+git clone  http://172.16.238.66/backend/digital.git
+cd digital
+git branch
+git checkout develop
+git pull origin          ---- to get up to date code from git
+git checkout -b feature/userprofileRefactored     --------- create new branch and switch to that branch
+git add . 
+or 
+git add  src/main/java/com/maveric/digital      ------- path for selected files
+git commit -m "message"
+ 
+git push -u origin feature/userprofileRefactored
+ 
+----------------------------------------------------------------------------------------------------
+ 
+ 
+if have to use old branch
+ 
+------first add all files----
+git add src/main/java/com/maveric/digital
+git status
+git commit -m "message"
+----then,
+git checkout develop
+git pull origin
+git checkout feature/softDelete
+git merge develop
+git push -u origin feature/softDelete
