@@ -1,0 +1,258 @@
+
+To track the status .git directory is automaticaly created
+.gitignore is used to ignore unwanted files we can ignore specified files or folder
+
+
+ssh-keygen -t rsa -b 4096 -C "belankars@gmail.com"
+
+
+ssh-agent -s
+ssh-add ~/.ssh/ <filename of key>
+eval `ssh-agent -s`
+ssh-add ~/.ssh/id_rsa
+
+
+-----------------------------------------------------
+Git Configuration Commands
+-----------------------------------------------------
+--to see the configurations
+git config --list
+
+git config --global user.name
+git config --global user.emiail
+git config --global user.password
+
+-----------------------------------------------------
+Git Branch Commands
+-----------------------------------------------------
+
+-- TO initialize the any directory as git reposotory
+git init
+
+--To show all available braches
+git branch
+
+--show all branches including remote
+git branch -a 
+
+--show the remote branches
+git branch -r
+
+--To create new beanch
+git branch <branch-name>
+
+--To switch another branch
+git checkout <branch-name>
+
+--To create new branch and checkout at the same time
+git checkout -b <branch-name>
+
+--push local branch to remote / github 
+git push -u origin <branch-name>
+
+--to merge a branch into currently checkout branch
+git merge <branch-name which is to be merge>
+ex. git merge dev
+consider current branch is dev-next. Now dev branch will be merge in dev-next.
+
+
+--delete local branch
+git branch -d <branch-name>
+
+--delete local branch forcefully
+git branch -D <branch-name>
+
+--delete remote branch
+git push origin -d <branch-name>
+
+---------------------------------------------------------------------------------------------------------------------
+
+--To check the status of the project, we can see untracked files commited files
+git status
+
+Newly added files start from untracked status
+
+--To add the untracked files in staging area, you can specify multiple fies seperated by space
+ex. git add cal.css calc.js
+
+--delete and add to staging area
+git rm filename
+
+--to add all files from cureent working directory to staging area
+git add --all
+git add *
+git add .
+
+--To add modified files in staging area and commit at same time(it will add only modified files)
+git commit -a -m "commit message"
+
+---------------------------------------------------------
+Comparing commands
+---------------------------------------------------------
+
+--compare working directory with staging area
+git diff
+
+--show the changes done in staging area
+git diff --statged
+
+--compare the changes with staging area & commited state
+git diff --cached
+
+--show the changes done in specified file only
+git diff filename
+
+--show the differnece between in two commits
+git diff <commitId1> <CommitID2>
+
+-----------------------------------
+	STASH COMMANDS
+-----------------------------------
+
+--To store all the changes in stash for later user
+git stash .
+
+--To store the multiple changes in stash
+git stash save stash-refference-name
+ex. git stash save mycoolstuff
+
+--To see the list of stash
+git stash list
+
+--To apply the stash from list of stash. Index start from zero.
+git stash apply <Index-number>
+
+--------------------------------------
+	GIT Reset Commands
+--------------------------------------
+
+
+--override local code with remote code. all changes removed
+git reset --hard origin/master
+
+--reset last commit and moved changes to modified/untracked state
+git reset --mixed HEAD~1
+
+
+--reset last commit and moved changes to modified/untracked state. but HEAD will point to Commit which is reset. 
+git reset --hard HEAD
+
+--To move the staging area file into working dorectory (modified)
+git restore --staged <filename>
+
+--reset last commit and changes will moved to staging area.
+git reset --soft HEAD
+
+--To remove untracked files and unwanted files such as build artifacts
+git clean -dF
+
+--To reset the last local commit (which is not yet push to remote)
+moves the head and master branch to that commit
+git reset <commit-id>
+
+ex. logs before reset
+	43ug314 added the headline <-- this is our last commit we want to undo
+ 	h15ih23 added css for index <-- after reset will be at this commit
+	5225b2b added main.js
+	
+	git reset h15ih23
+	
+	logs after reset
+	h15ih23 added css for index
+	5225b2b added main.js
+--------------------------------------
+	GIT Commit History / Logs
+--------------------------------------
+--to see the hostory of commit
+git log
+
+--show two recent logs 
+git log --oneline -2
+
+--decorate history 
+git log --graph --oneline --decorate
+
+--last 2 hours commit history
+git log --since=2.hours
+
+--show the logs of another branch
+git log <target-branch-name>
+
+--show commit history by auther name time and message
+git log --pretty=format:"%h - @an, %ar : %s"
+
+------------------------------------------
+TAGS 
+------------------------------------------
+--add the tag (lighweight tag)
+git tag "<tag-name>" <commit-id>
+
+--list the tags
+git tag -l
+git tag -l <reg-ex> ex. git tag -l v1.0.*
+
+--delete tag
+git tag -d <tag name>
+
+--to add tag to the commit (annotated tag)
+git tag -a "tag-name" <commit-id> -m "facebook with title and login page"
+
+--to tsearch the tag
+git show <name of the tag>
+
+--push tag to the github server
+git push origin <tag-name>
+
+--creating branch from tag
+git checkout -b <branch-name> <tag-name>
+
+
+
+
+
+
+
+=========================================================================
+.....Git.....
+ 
+to clone from git
+git clone  http://172.16.238.66/backend/digital.git
+cd digital
+git branch
+git checkout develop
+git pull origin          ---- to get up to date code from git
+git checkout -b feature/userprofileRefactored     --------- create new branch and switch to that branch
+git add . 
+or 
+git add  src/main/java/com/maveric/digital      ------- path for selected files
+git commit -m "message"
+ 
+git push -u origin feature/userprofileRefactored
+ 
+----------------------------------------------------------------------------------------------------
+ 
+ 
+if have to use old branch
+ 
+------first add all files----
+git add src/main/java/com/maveric/digital
+git status
+git commit -m "message"
+----then,
+git checkout develop
+git pull origin
+git checkout feature/softDelete
+git merge develop
+git push -u origin feature/softDelete
+ 
+
+
+
+
+interview core code
+
+https://javaconceptoftheday.com/java-8-interview-sample-coding-questions/
+
+https://javaconceptoftheday.com/solving-real-time-queries-using-java-8-features-employee-management-system/
+
+https://javabypatel.blogspot.com/2018/06/java-8-stream-practice-problems.html
