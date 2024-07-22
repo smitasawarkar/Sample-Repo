@@ -10,4 +10,8 @@ public class WorkflowRunsController {
     }
 }public long getNoOfRecordsSubmitted(boolean itemsForApproval) {
         return workflowRunsRepository.countByItemsForApproval(itemsForApproval);
-    }
+    } public interface WorkflowRunsRepository extends JpaRepository<WorkflowRuns, Long> {
+    
+    @Query("SELECT COUNT(wr) FROM WorkflowRuns wr WHERE wr.itemsForApproval = :itemsForApproval")
+    long countByItemsForApproval(@Param("itemsForApproval") boolean itemsForApproval);
+}
