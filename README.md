@@ -1,1 +1,1 @@
-write API that allows searching for relevant usernames and emails from a user table based on some keywords entered in a search bar in java spring boot
+Get no of records selected by checkbox for send for approval from WORKFLOW_RUNS table having the column ITEMS FOR APPROVAL and return the result in number integer @GetMapping(" /getNoOfRecordsSubmited”} write controler service repo for this in java spring boot
