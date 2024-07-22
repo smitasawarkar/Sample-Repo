@@ -8,4 +8,6 @@ public class WorkflowRunsController {
     public long getNoOfRecordsSubmitted(@RequestParam boolean itemsForApproval) {
         return workflowRunsService.getNoOfRecordsSubmitted(itemsForApproval);
     }
-}
+}public long getNoOfRecordsSubmitted(boolean itemsForApproval) {
+        return workflowRunsRepository.countByItemsForApproval(itemsForApproval);
+    }
